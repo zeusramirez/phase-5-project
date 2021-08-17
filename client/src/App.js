@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import React, {useState, useEffect} from 'react';
+import {Route, Switch, useHistory, Redirect} from 'react-router-dom'
+
+import Account from './components/Account';
+import Main from './components/Main'; 
+import Login from './components/Login';
+import Garage from './components/Garage';
+import NaviBar from './components/NaviBar'
+
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NaviBar/>
+
+      <Switch>
+        <Route exact path = "/">
+          <Main/>
+        </Route>
+        <Route exact path = "/account">
+          <Account/>
+        </Route>
+        <Route exact path = "/mygarage">
+          <Garage/>
+        </Route>
+        <Route exact path = "/login">
+          <Login/>
+        </Route>
+      </Switch>
+      
     </div>
   );
 }
