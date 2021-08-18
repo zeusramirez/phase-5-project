@@ -13,6 +13,8 @@ import NaviBar from './components/NaviBar'
 
 
 function App() {
+  const [user, setUser] = useState(null)
+
   return (
     <div className="App">
       <NaviBar/>
@@ -28,7 +30,7 @@ function App() {
           <Garage/>
         </Route>
         <Route exact path = "/login">
-          <Login/>
+          <Login setUser={setUser}/>
         </Route>
       </Switch>
       
