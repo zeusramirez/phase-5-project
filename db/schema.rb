@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_233451) do
   create_table "vehicles", force: :cascade do |t|
     t.integer "year"
     t.integer "mileage"
+    t.string "name"
     t.string "make"
     t.string "model"
     t.string "category"

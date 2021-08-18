@@ -24,9 +24,9 @@ function NaviBar() {
                     </Nav>
                 </Container>
             <div>
-                <h3>
+                <h5>
                     Welcome, USER
-                </h3>
+                </h5>
             </div>
             </Navbar>
         </header>

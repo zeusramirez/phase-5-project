@@ -15,6 +15,7 @@ end
 5.times do 
     Vehicle.create(
         year: Faker::Vehicle.year,
+        name: Faker::Games::Pokemon.name,
        mileage: Faker::Vehicle.mileage(max: 300_000),
        make: Faker::Vehicle.make,
        model: Faker::Vehicle.model,
