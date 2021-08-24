@@ -14,10 +14,13 @@ Rails.application.routes.draw do
  
   post "/signup", to: "users#create"
   get "/getvehicles", to: "users#vehlist"
+  get "/getfollows", to: "users#followlist"
 
 
   post "/addvehicle", to: "vehicles#create"
+  # delete "/delvehicle", to: "vehicles#destroy"
   post "/follow", to: "followings#create"
+  delete "/unfollow", to: "followings#destroy"
 
   post "/addlog", to: "updates#create"
 end

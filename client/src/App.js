@@ -1,6 +1,6 @@
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Route, Switch, useHistory, Redirect} from 'react-router-dom'
 
 import Main from './components/Main'; 
@@ -16,6 +16,8 @@ function App() {
     let history = useHistory()
     const [user, setUser] = useState(null)
     const [errors, setErrors] = useState([])
+    const [followFeed, setFollowFeed] = useState([])
+    const [fetchFollows, setFetchFollows] = useState(false)
   //console.log(user.followings)
 
   async function logOut() {
@@ -27,6 +29,18 @@ function App() {
       history.push("/")
     }
   }
+
+  useEffect(() => {
+    if (user != null){
+        async function getFollows(){
+            const res = await fetch('/getfollows')
+            const followArr = await res.json()
+            setFollowFeed(followArr)
+        }
+        getFollows()
+    }
+  }, [fetchFollows])
+  console.log(followFeed)
 
   async function postUserInfo(updatedInfo) {
     const res = await fetch (`users/${user.id}`,{
@@ -49,16 +63,16 @@ function App() {
 
       <Switch>
         <Route exact path = "/">
-          <Main/>
+          <Main user={user} followFeed={followFeed} fetchFollows={fetchFollows} setFetchFollows={setFetchFollows}/>
         </Route>
         <Route exact path = "/vehicle/:id">
-          <VehicleView user={user}/>
+          <VehicleView user={user} followFeed={followFeed} fetchFollows={fetchFollows} setFetchFollows={setFetchFollows}/>
         </Route>
         <Route exact path = "/mygarage">
           {user ? <Garage user={user}  errors={errors} postUserInfo={postUserInfo}/> : <Redirect to="/" />}
         </Route>
         <Route exact path = "/login">
-          <Login setUser={setUser}/>
+          <Login setUser={setUser} fetchFollows={fetchFollows} setFetchFollows={setFetchFollows}/>
         </Route>
       </Switch>
       

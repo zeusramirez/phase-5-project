@@ -47,6 +47,20 @@ class UsersController < ApplicationController
         end
     end
 
+    def followlist 
+        user = User.find_by(id: session[:user_id])
+        followed = []
+        if user
+            user.followings.each do |follow|
+               car = Vehicle.find_by(id: follow.vehicle_id)
+               followed << car
+            end
+            render json: followed
+        else
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
 
     private
 

@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 
 export default function AddLog(props) {
-    const {carData, setShowLogForm, showLogForm} = props
+    const {carData, setShowLogForm} = props
     const [errors, setErrors] = useState([])
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [type, setType] = useState("")
+    const [type, setType] = useState("modification")
     const [mileage, setMileage] = useState(0)
     const [price, setPrice] = useState(0)
     const [difficulty, setDifficulty] = useState(0)
@@ -59,7 +59,7 @@ export default function AddLog(props) {
                         <div className="col-4">
                             <div className="form-group">
                                 <label >Difficulty</label>
-                                <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} type="number" className="form-control" placeholder="Difficulty Rating">
+                                <select defaultValue={0} value={difficulty} onChange={(e) => setDifficulty(e.target.value)} type="number" className="form-control" placeholder="Difficulty Rating">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>

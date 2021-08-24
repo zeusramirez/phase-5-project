@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useHistory } from 'react-router-dom'
 
-export default function Login({setUser}) {
+export default function Login({setUser, fetchFollows, setFetchFollows}) {
     const [loginView, setLoginView] = useState(true)
     const [name, setName] = useState("")
     const [username, setUsername] = useState("")
@@ -30,6 +30,7 @@ export default function Login({setUser}) {
         const data = await res.json()
         if (res.ok) {
             setUser(data)
+            setFetchFollows(!fetchFollows)
           history.goBack()
         } else {
             console.log(data)
@@ -55,12 +56,12 @@ export default function Login({setUser}) {
       setUser(data)
         history.goBack()
     } else {
-        setErrors(data.errors)
+        setErrors(data.error)
     }
     }
   return (
       <>
-      {errors !== [] ? (
+      {errors.length > 0 ? (
       <div>
           {errors.map((error, index)=> (<p style={{color: 'red'}} key={index}>{error}</p>))}
       </div>)

@@ -3,7 +3,7 @@ import image from '../update.png'
 
 export default function VehicleLogCard(props) {
   const {title, update_type, mileage, price, difficulty, description} = props
-  console.log(props)
+
   return (
     <div className="col-md-4">
       <div className="card mb-4 box-shadow">
@@ -17,8 +17,8 @@ export default function VehicleLogCard(props) {
         />
         <div className="card-body">
           <h4>{title}</h4>
-          <p>Price: ${price}</p>
-          <p>Mileage at time of service: {mileage}</p>
+          <p>Price: ${price.toLocaleString()}</p>
+          <p>Mileage at time of service: {mileage.toLocaleString()}</p>
           <p className="card-text">{description}</p>
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
