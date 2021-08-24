@@ -31,17 +31,19 @@ html, body {
   font-family: var(--font-sans);
   
   @media (min-width: $bp-md) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
   
   @media (min-width: $bp-lg) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
+.form-group {
+  margin-bottom: 1rem;
+}
 
-
-.card {  
+.feed-card {  
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -69,7 +71,7 @@ html, body {
     width: 100%;
     height: 110%;
     background-size: cover;
-    background-position: -60px 0;
+    background-position: -60px -315px;
     background-image: url(https://shmector.com/_ph/13/853993434.png);
     transition: transform calc(var(--d) * 1.5) var(--e);
     pointer-events: none;
@@ -144,7 +146,7 @@ html, body {
   line-height: 1.35;
 }
 
-.btn {
+.feed-btn {
   cursor: pointer;
   margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
@@ -167,7 +169,7 @@ html, body {
 }
 
 @media (hover: hover) and (min-width: $bp-md) {
-  .card:after {
+  .feed-card:after {
     transform: translateY(0);
   }
   
@@ -183,8 +185,8 @@ html, body {
     }
   }
   
-  .card:hover,
-  .card:focus-within {
+  .feed-card:hover,
+  .feed-card:focus-within {
     align-items: center;
 
     &:before { transform: translateY(-4%); }
@@ -201,7 +203,7 @@ html, body {
     }
   }
   
-  .card:focus-within {
+  .feed-card:focus-within {
     &:before,
     &:after,
     .content,

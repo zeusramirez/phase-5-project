@@ -14,7 +14,7 @@ export default function Main() {
     }
     getVehicles()
     }, [])
-    console.log(vehArr)
+    // console.log(vehArr)
     return (
         <div>
             <h2>Welcome to ProjectBuild</h2>

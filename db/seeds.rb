@@ -12,7 +12,7 @@
         password: "1111"
     )
 end
-5.times do 
+10.times do 
     Vehicle.create(
         year: Faker::Vehicle.year,
         name: Faker::Games::Pokemon.name,
@@ -24,10 +24,23 @@ end
        user_id: User.all.ids.sample
     )
 end
+mod_type= ["modification", "repair", "maintenance"]
+20.times do
+    Update.create(
+       vehicle_id: Vehicle.all.ids.sample,
+       title:  Faker::Vehicle.car_options,
+       mileage: Faker::Vehicle.mileage(max: 300_000),
+       difficulty: rand(10),
+       price: rand(5..10000),
+       description: Faker::Lorem.sentence,
+       update_type: mod_type.sample
+    )
+end
+
 5.times do
     Following.create(
         vehicle_id: Vehicle.all.ids.sample,
         user_id: User.all.ids.sample
     )
 end
-"Seed Successful!"
+puts "Seed Successful!"

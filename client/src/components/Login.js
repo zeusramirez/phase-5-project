@@ -30,14 +30,41 @@ export default function Login({setUser}) {
         const data = await res.json()
         if (res.ok) {
             setUser(data)
-          history.push("/")
+          history.goBack()
         } else {
             console.log(data)
             setErrors(data.errors)
         }
+        
+    }
+
+    async function handleSignup(e) {
+      e.preventDefault()
+      const userData = {
+        name,
+        username,
+        password
+      }
+      const res = await fetch("/signup", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(userData)
+    })
+    const data = await res.json()
+    if (res.ok) {
+      setUser(data)
+        history.goBack()
+    } else {
+        setErrors(data.errors)
+    }
     }
   return (
       <>
+      {errors !== [] ? (
+      <div>
+          {errors.map((error, index)=> (<p style={{color: 'red'}} key={index}>{error}</p>))}
+      </div>)
+      : null} 
       {loginView ?
     (
         <div className="login-form">
@@ -70,7 +97,7 @@ export default function Login({setUser}) {
         </div>
       </form>
       <p className="text-center small">
-        Don't have an account? <a className="link" onClick={toggleView}>Sign up here</a>.
+        Don't have an account? <a  className="link" onClick={toggleView}>Sign up here</a>.
       </p>
     </div>
     ):(
@@ -108,7 +135,7 @@ export default function Login({setUser}) {
           </div>
         </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-primary btn-block">
+          <button onClick={handleSignup} type="submit" className="btn btn-primary btn-block">
            Create Account
           </button>
         </div>

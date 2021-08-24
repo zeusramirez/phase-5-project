@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+/* Navi styling */
+.navi{
+  margin-top: auto;
+}
+.navi-container{
+  max-width: none;
+}
+.logo{
+  color:#282c34;
+  background-color:#61dafb;
+  border-radius: 8%;
+}
+.navi-login{
+  margin-right: unset;
+}
+/* Account overview styling */
+
+/* body {
+  margin: 0;
+  padding-top: 40px;
+  color: #2e323c;
+  background: #f5f6fa;
+  position: relative;
+  height: 100%;
+} */
+
+.form-control {
+  border: 1px solid #cfd1d8;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-size: .825rem;
+  background: #ffffff;
+  color: #2e323c;
+}
+
+
+.card-body {
+  width: 100%;
+  border: none;
+}
+
+div h-100{
+  border:none;
+}
+.input-group-text {
+  padding: .75rem .75rem;
+}
+.h-100{
+  border: none;
+}
+.add-veh{
+  margin-left:16rem;
+}

@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_233451) do
   create_table "updates", force: :cascade do |t|
     t.integer "vehicle_id"
     t.string "title"
-    t.string "type"
+    t.string "update_type"
     t.integer "mileage"
     t.integer "difficulty"
     t.integer "price"

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            render json: {errors: user.errors.full_messages }
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
@@ -28,7 +28,20 @@ class UsersController < ApplicationController
         user = User.find_by(id: session[:user_id])
         user.update(user_params)
         if user.valid?
-            render json: user
+            render json: user, status: :accepted
+        else
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
+    def vehlist
+        user = User.find_by(id: session[:user_id])
+        vehs = []
+        if user
+            user.vehicles.each do |vehicle|
+                vehs << vehicle     
+            end
+            render json: vehs       
         else
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
