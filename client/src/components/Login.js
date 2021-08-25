@@ -56,7 +56,7 @@ export default function Login({setUser, fetchFollows, setFetchFollows}) {
       setUser(data)
         history.goBack()
     } else {
-        setErrors(data.error)
+        setErrors(data.errors)
     }
     }
   return (

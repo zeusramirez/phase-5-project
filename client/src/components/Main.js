@@ -12,16 +12,6 @@ export default function Main(props) {
     const res = await fetch('/vehicles')
     const vehiclesData = await res.json()
     setVehArr(vehiclesData)
-    // if (user != null){
-    //     vehArr.map(vehicle => {
-    //         user.followings.map(follow => {
-    //             if (follow.id === vehicle.id){
-    //                 setFollowFeed(...followFeed, vehicle)
-    //                 console.log("+1 Followed Vehicle!")
-    //             }
-    //         })
-    //     })
-    // }
     }
     getVehicles()
     }, [])
@@ -29,9 +19,9 @@ export default function Main(props) {
         <div>
             <h2>Welcome to ProjectBuild</h2>
             <p>Where car enthusiasts can come together and share their projects and car builds!</p>
+                {user && followFeed.length > 0 ? (<><h4>Followed Projects</h4> <div className="page-content">{followFeed.map(vehicle => <FeedCard key={vehicle.id} {...vehicle}/>)}</div><h2>All Projects</h2></>):null}
+                
             <div className="page-content">
-                {user && followFeed.length > 0 ? (<><h4>Followed Projects</h4> {followFeed.map(vehicle => <FeedCard key={vehicle.id} {...vehicle}/>)}</>):null}
-                <h2>All Projects</h2>
             {vehArr.map(vehicle => <FeedCard key={vehicle.id} {...vehicle}/>)}
             </div>
         </div>

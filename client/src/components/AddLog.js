@@ -9,6 +9,7 @@ export default function AddLog(props) {
     const [mileage, setMileage] = useState(0)
     const [price, setPrice] = useState(0)
     const [difficulty, setDifficulty] = useState(0)
+    const [logLink, setLogLink] = useState("")
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -30,6 +31,17 @@ export default function AddLog(props) {
         if (res.ok){
             console.log(data)
             setShowLogForm(false)
+            const r = await fetch("/logaddimage", {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({url:logLink, log_id:data.id})
+            })
+            const logImgData = await r.json()
+            if (r.ok){
+                console.log(logImgData)
+            }else{
+                console.log(logImgData.errors)
+            }
         }else {
             setErrors(data.errors)
             console.log(errors)
@@ -59,7 +71,7 @@ export default function AddLog(props) {
                         <div className="col-4">
                             <div className="form-group">
                                 <label >Difficulty</label>
-                                <select defaultValue={0} value={difficulty} onChange={(e) => setDifficulty(e.target.value)} type="number" className="form-control" placeholder="Difficulty Rating">
+                                <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} type="number" className="form-control" placeholder="Difficulty Rating">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -94,6 +106,12 @@ export default function AddLog(props) {
                                     <option value="maintenance">Maintenance</option>
                                     <option value="repair">Repair</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div className="form-group">
+                                <label >Image Link</label>
+                                <input value={logLink} onChange={(e) => setLogLink(e.target.value)} type="text" className="form-control"  placeholder="Enter image URL"/>
                             </div>
                         </div>
                         <div >

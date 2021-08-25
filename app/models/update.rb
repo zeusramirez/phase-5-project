@@ -1,5 +1,6 @@
 class Update < ApplicationRecord
     belongs_to :vehicle
+    has_many :log_images
 
     validates :vehicle_id, presence: true
     validates :title, presence: true

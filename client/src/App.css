@@ -49,7 +49,7 @@
   border-radius: 8%;
 }
 .navi-login{
-  margin-right: unset;
+  margin-right: unset !important;
 }
 /* Account overview styling */
 

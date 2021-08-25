@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :log_images
+  resources :images
   resources :followings
   resources :updates
   resources :vehicles
@@ -21,6 +23,9 @@ Rails.application.routes.draw do
   # delete "/delvehicle", to: "vehicles#destroy"
   post "/follow", to: "followings#create"
   delete "/unfollow", to: "followings#destroy"
+
+  post "/vehicleimage", to: "images#create"
+  post "/logaddimage", to: "log_images#create"
 
   post "/addlog", to: "updates#create"
 end

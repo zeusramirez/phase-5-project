@@ -9,6 +9,7 @@ export default function AddVehicle(props) {
     const [model, setModel] = useState("")
     const [category, setCategory] = useState("")
     const [bio, setBio] = useState("")
+	const [imgUrl, setImgUrl] = useState("")
     const [errors, setErrors] = useState([])
     
 
@@ -35,6 +36,17 @@ export default function AddVehicle(props) {
         } else {
             setErrors(data.errors)
         }
+		const r = await fetch("/vehicleimage",{
+			method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({url:imgUrl, vehicle_id: data.id})
+        })
+		const imgData = await r.json()
+		if (r.ok){
+			console.log(imgData)
+		} else {
+			console.log(imgData.errors)
+		}
     }
     return (
         <div className="container">
@@ -84,6 +96,12 @@ export default function AddVehicle(props) {
 				<div className="form-group">
 					<label >Mileage</label>
 					<input value={miles} onChange={(e) => setMiles(e.target.value)} type="number" className="form-control"  placeholder="Enter mileage"/>
+				</div>
+			</div>
+			<div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div className="form-group">
+					<label >Cover Image</label>
+					<input value={imgUrl} onChange={(e) => setImgUrl(e.target.value)} type="text" className="form-control"  placeholder="Enter image URL"/>
 				</div>
 			</div>
             <div >
