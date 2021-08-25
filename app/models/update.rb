@@ -1,6 +1,7 @@
 class Update < ApplicationRecord
     belongs_to :vehicle
-    has_many :log_images
+    has_many :log_images, dependent: :destroy
+    
 
     validates :vehicle_id, presence: true
     validates :title, presence: true
@@ -11,4 +12,6 @@ class Update < ApplicationRecord
     validates :difficulty, presence: true 
     validates :price, presence: true
     validates :description, presence: true
+
+  
 end

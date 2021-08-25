@@ -37,19 +37,36 @@
   }
 }
 /* Navi styling */
+.navbar{
+  background-color: #0c1923;
+}
 .navi{
-  margin-top: auto;
+  margin-right: 1rem;
+  /* margin-top: auto; */
 }
 .navi-container{
   max-width: none;
 }
+ /* .navi-logo{
+  /* background-image: url("./logo-wrench.png"); */
+ /* } */
 .logo{
   color:#282c34;
-  background-color:#61dafb;
+  background-image: url("./logo-wrench.png");
+  background-size: cover;
   border-radius: 8%;
+  width: 12rem;
+  height: 4rem;
+  padding-top: 0.9125rem;
 }
 .navi-login{
   margin-right: unset !important;
+  border-radius: 2rem;
+  background-color: #061014;
+  color: white;
+}
+.nav-link{
+  color:white;
 }
 /* Account overview styling */
 
@@ -90,3 +107,19 @@ div h-100{
 .add-veh{
   margin-left:16rem;
 }
+
+.card {
+  background-color: #16243e ;
+}
+.view-image {
+  max-height: 38rem;
+  height: auto;
+  width: 50rem;
+}
+
+.my-2{
+  margin-right: 4rem !important;
+}
+
+/* #5d5d5d */
+/* #16243e */

@@ -26,9 +26,17 @@ export default function Garage(props) {
             {showAccForm ? <Modal show={true}><Account errors={errors} user={user} postUserInfo={postUserInfo} setShowAccForm={setShowAccForm} showAccForm={showAccForm}/></Modal>:null}
             <>
             <div>
+            <br/>
+            <br/>
+            
             <h2>{user.username}'s Garage</h2>
-            <button onClick={() => setShowAccForm(true)} className="btn btn-warning">Edit Account</button>
-            <button  onClick={() => setShowVehForm(true)}className="btn btn-success">Add a Vehicle</button>
+            <button onClick={() => setShowAccForm(true)} className="btn btn-sm btn-warning my-2">Edit Account</button>
+            <button  onClick={() => setShowVehForm(true)}className="btn btn-sm btn-success">Add a Vehicle</button>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            
             </div>
             <div className="page-content">
             {vehs.map(vehicle => <FeedCard key={vehicle.id} {...vehicle}/> )}

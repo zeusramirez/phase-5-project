@@ -14,45 +14,44 @@ export default function VehicleView(props) {
     const id = useParams().id
     let owner = false
     let followed = false
-    //  console.log(carData)
+    let imageCard = ""
     if (user !== null && user.id === carData.user_id){
         owner = true
     }
-    console.log(followFeed)
     if (user != null && followFeed.length > 0){
         followFeed.map(follow => 
-        {
-        if (follow.id === carData.id){
-            followed = true
-            console.log("ITS HERE", followed)
-        }}
-        )}
-
-    async function handleDel(e){
-        e.preventDefault()
-        const res = await fetch(`/vehicles/${id}`, {
-            method: "DELETE"
-        })
-        if (res.ok) {
-            history.goBack()
-        }
-    }
-    async function handleFollow(e) {
-        let text = e.target.innerText
-        e.preventDefault()
-        if (text === "Follow"){
-            const following = {
-                user_id: user.user_id,
-                vehicle_id: carData.id
-            }
-            const res = await fetch("/follow",{
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(following)
-            })
-            const data = await res.json()
-            if (res.ok) {
-                console.log("Following!", data)
+            {
+                if (follow.id === carData.id){
+                    followed = true
+                    console.log("ITS HERE", followed)
+                }}
+                )}
+                
+                async function handleDel(e){
+                    e.preventDefault()
+                    const res = await fetch(`/vehicles/${id}`, {
+                        method: "DELETE"
+                    })
+                    if (res.ok) {
+                        history.goBack()
+                    }
+                }
+                async function handleFollow(e) {
+                    let text = e.target.innerText
+                    e.preventDefault()
+                    if (text === "Follow"){
+                        const following = {
+                            user_id: user.user_id,
+                            vehicle_id: carData.id
+                        }
+                        const res = await fetch("/follow",{
+                            method: "POST",
+                            headers: {"Content-Type": "application/json"},
+                            body: JSON.stringify(following)
+                        })
+                        const data = await res.json()
+                        if (res.ok) {
+                            console.log("Following!", data)
                 setFetchFollows(!fetchFollows)
                 
             }else{
@@ -79,14 +78,20 @@ export default function VehicleView(props) {
             const res = await fetch(`/vehicles/${id}`)
             const vehicleData = await res.json()
             setCarData(vehicleData)
-            }
-            getVehicleData()
-            }, [showLogForm])
+        }
+        getVehicleData()
+    }, [showLogForm])
+    if (carData.images === undefined) {
+    }else if (carData.images.length > 0){
+        imageCard = carData.images[0].url
+    }
+    console.log(carData)
     return (
         <main role="main">
             {showLogForm ? <Modal show={true}><AddLog showLogForm={showLogForm} setShowLogForm={setShowLogForm} carData={carData}/></Modal>:null}
       <section className="jumbotron text-center">
         <div className="container">
+        <img className="view-image" src={imageCard}/>
           <h1 className="jumbotron-heading">{carData.name}</h1>
           <h4>{carData.year} {carData.make} {carData.model}</h4>
           <p className="lead text-muted">{carData.bio}</p>
@@ -98,16 +103,18 @@ export default function VehicleView(props) {
                 {followed ? "Unfollow": "Follow"}</button>)
                 :(<Link to="/login"><button className="btn btn-success">Sign In to Follow</button></Link>)}</>
                 }
-            {owner ? <button onClick={handleDel} className="btn btn-secondary my-2">Remove Vehicle</button>: null}
+            {owner ? <button onClick={handleDel} className="btn btn-secondary my-4">Remove Vehicle</button>: null}
           </p>
         </div>
       </section>
-
-      <div className="album py-5 bg-light">
+            <br/>
+            <br/>
+            <br/>
+      <div className="album py-5">
         <div className="container">
 
           <div className="row">
-              {carData.updates && carData.updates.length > 0 ? carData.updates.map(update => <VehicleLogCard key={update.id} {...update}/>):( <>{owner ? <h2> No Updates to show... Add one now!</h2>: <h2>No Updates to show... Check back later!</h2>}</>)}
+              {carData.updates && carData.updates.length > 0 ? carData.updates.map(update => <VehicleLogCard key={update.id} images={carData.log_images}{...update}/>):( <>{owner ? <h2> No Updates to show... Add one now!</h2>: <h2>No Updates to show... Check back later!</h2>}</>)}
           </div>
         </div>
       </div>

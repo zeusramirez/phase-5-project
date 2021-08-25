@@ -1,3 +1,3 @@
 class LogImageSerializer < ActiveModel::Serializer
-  attributes :id, :log_id, :url
+  attributes :id, :update_id, :url
 end

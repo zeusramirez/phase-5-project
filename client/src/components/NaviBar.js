@@ -29,7 +29,7 @@ function NaviBar(props) {
                         </Nav>
                         </>
                         )}
-                    {user != null ? <><h5 className="navi">{user.username} </h5> <button onClick={logOut} className="btn btn-sm">Log Out</button></>: null}
+                    {user != null ? <><h5 className="navi">{user.username} </h5> <button onClick={logOut} className="btn btn-sm navi-login">Log Out</button></>: null}
                 </Container>
             </Navbar>
         </header>

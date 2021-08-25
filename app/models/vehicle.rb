@@ -1,7 +1,9 @@
 class Vehicle < ApplicationRecord
-    has_many :updates, dependent: :destroy
     has_many :followings
+    has_many :updates, dependent: :destroy
     has_many :images, dependent: :destroy
+    has_many :log_images, through: :updates
+
 
     validates :year, length: {is:4}
     validates :mileage, numericality: {less_than:1000000, greater_than:0}

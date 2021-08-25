@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 2021_08_24_173245) do
   end
 
   create_table "log_images", force: :cascade do |t|
-    t.integer "log_id"
+    t.bigint "update_id"
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["update_id"], name: "index_log_images_on_update_id"
   end
 
   create_table "updates", force: :cascade do |t|
@@ -69,4 +70,5 @@ ActiveRecord::Schema.define(version: 2021_08_24_173245) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "log_images", "updates"
 end

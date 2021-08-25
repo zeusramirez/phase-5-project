@@ -13,7 +13,7 @@ export default function AddLog(props) {
 
     async function handleSubmit(e){
         e.preventDefault()
-        let update = {
+        const update = {
             vehicle_id: carData.id,
             title,
             update_type: type,
@@ -31,20 +31,20 @@ export default function AddLog(props) {
         if (res.ok){
             console.log(data)
             setShowLogForm(false)
-            const r = await fetch("/logaddimage", {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({url:logLink, log_id:data.id})
-            })
-            const logImgData = await r.json()
-            if (r.ok){
-                console.log(logImgData)
-            }else{
-                console.log(logImgData.errors)
-            }
         }else {
             setErrors(data.errors)
-            console.log(errors)
+            console.log(data.error)
+        }
+        const r = await fetch("/logaddimage", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({url: logLink, update_id: data.id})
+        })
+        const logImgData = await r.json()
+        if (r.ok){
+            console.log(logImgData)
+        }else{
+            console.log(logImgData)
         }
 
     }

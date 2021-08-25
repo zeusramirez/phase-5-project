@@ -9,7 +9,7 @@ export default function FeedCard(props) {
  if (props.images.length > 0){  
     background = props.images[0].url
  }
- console.log(background)
+ //console.log(background)
   return (
  
       <div className="feed-card" 

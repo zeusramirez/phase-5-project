@@ -1,8 +1,8 @@
 class LogImagesController < ApplicationController
 
     def create
-        image = LogImage.create(url: params[:url], log_id: params[:log_id])
-        if image
+        image = LogImage.create(img_params)
+        if image.valid?
             render json: image, status: :created
         else
             render json: { errors: image.errors.full_messages }, status: :unprocessable_entity
@@ -11,6 +11,6 @@ class LogImagesController < ApplicationController
     private
 
     def img_params
-        params.permit(:url, :log_id)
+        params.permit(:url, :update_id)
     end
 end

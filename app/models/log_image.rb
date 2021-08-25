@@ -1,3 +1,3 @@
 class LogImage < ApplicationRecord
-    belongs_to :log_update, class_name: "Update"
+    belongs_to :updt, foreign_key: "update_id", class_name: "Update"
 end
