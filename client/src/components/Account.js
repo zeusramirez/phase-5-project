@@ -32,48 +32,25 @@ export default function Account(props) {
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div className="form-group">
                     <label >Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      value = {name}
-                      onChange={e => setName(e.target.value)}
-                    />
+                    <input type="text" className="form-control"
+                      value = {name} onChange={e => setName(e.target.value)}/>
                   </div>
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div className="form-group">
                     <label >Username</label>
-                    <input
-                      type="username"
-                      className="form-control"
-                      value = {userName}
-                      onChange={e => setUserName(e.target.value)}
-                    />
+                    <input  type="username" className="form-control"  value = {userName} onChange={e => setUserName(e.target.value)} />
                   </div>
                 </div>
               </div>
-              <div className="row gutters">
+              {/* <div className="row gutters">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div className="text-right">
-                    <button
-                      type="button"
-                      onClick={() =>  setShowAccForm(!showAccForm)}
-                      name="submit"
-                      className="btn btn-secondary"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleSubmit}
-                      name="submit"
-                      className="btn btn-primary"
-                    >
-                      Update
-                    </button>
-                  </div>
+                  <div className="text-right"> */}
+                    <button onClick={() =>  setShowAccForm(!showAccForm)} className="btn btn-secondary" > Cancel </button>
+                    <button onClick={handleSubmit} className="btn btn-primary btn-acc-left">Update</button>
+                  {/* </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

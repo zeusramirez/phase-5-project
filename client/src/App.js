@@ -40,7 +40,7 @@ function App() {
         getFollows()
     }
   }, [fetchFollows])
-  console.log(followFeed)
+  // console.log(followFeed)
 
   async function postUserInfo(updatedInfo) {
     const res = await fetch (`users/${user.id}`,{

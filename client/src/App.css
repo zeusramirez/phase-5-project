@@ -39,6 +39,7 @@
 /* Navi styling */
 .navbar{
   background-color: #0c1923;
+  
 }
 .navi{
   margin-right: 1rem;
@@ -47,17 +48,18 @@
 .navi-container{
   max-width: none;
 }
- /* .navi-logo{
+/* .navi-logo{
   /* background-image: url("./logo-wrench.png"); */
- /* } */
-.logo{
-  color:#282c34;
-  background-image: url("./logo-wrench.png");
-  background-size: cover;
+  /* } */
+  .logo{
+    color:#282c34;
+    background-image: url("./logo-wrench.png");
+    background-repeat: no-repeat;
+  background-size: contain;
   border-radius: 8%;
   width: 12rem;
   height: 4rem;
-  padding-top: 0.9125rem;
+  padding-top: 0.8rem;
 }
 .navi-login{
   margin-right: unset !important;
@@ -85,8 +87,9 @@
   -moz-border-radius: 2px;
   border-radius: 2px;
   font-size: .825rem;
-  background: #ffffff;
-  color: #2e323c;
+  /* background: #ffffff;   */
+  /* color: #ffffff; */
+
 }
 
 
@@ -112,6 +115,7 @@ div h-100{
   background-color: #16243e ;
 }
 .view-image {
+  border-radius: 1rem;
   max-height: 38rem;
   height: auto;
   width: 50rem;
@@ -123,3 +127,98 @@ div h-100{
 
 /* #5d5d5d */
 /* #16243e */
+
+.modal-confirm {		
+  /* color: #ffffff; */
+	width: 400px;
+}
+.modal-content {
+  background-color: #16243e;
+  border: none;
+}
+.modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-size: 14px;
+  background-color:#16243e;
+}
+.modal-confirm .modal-header {
+	border-bottom: none;   
+	position: relative;
+}
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -10px;
+}
+.modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -2px;
+}
+.modal-confirm .modal-footer {
+	border: none;
+	text-align: center;		
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 10px 15px 25px;
+}
+.modal-confirm .modal-footer a {
+	color: #999;
+}		
+.modal-confirm .icon-box {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	border-radius: 50%;
+	z-index: 9;
+	text-align: center;
+	border: 3px solid #f15e5e;
+}
+.modal-confirm .icon-box i {
+	color: #f15e5e;
+	font-size: 46px;
+	display: inline-block;
+	margin-top: 13px;
+}
+.modal-confirm .btn, .modal-confirm .btn:active {
+	color: #fff;
+	border-radius: 4px;
+	background: #60c7c1;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	min-width: 120px;
+	border: none;
+	min-height: 40px;
+	border-radius: 3px;
+	margin: 0 5px;
+}
+.modal-confirm .btn-secondary {
+	background: #c1c1c1;
+}
+.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
+	background: #a8a8a8;
+}
+.modal-confirm .btn-danger {
+	background: #f15e5e;
+}
+.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+	background: #ee3535;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
+.btn-acc-left{
+  margin-left: 18rem;
+}
+.garage-header{
+  display: flex;
+  justify-content:space-between;
+}
+.header-center{
+  margin-block: auto;
+}

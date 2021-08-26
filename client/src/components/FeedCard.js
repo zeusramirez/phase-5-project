@@ -6,8 +6,10 @@ import backgroundImg from '../feedCardBG.png'
 export default function FeedCard(props) {
  // const {id, bio, name} = props
  let background = backgroundImg
- if (props.images.length > 0){  
+ if (props.images.length > 0){
+   if(props.images[0].url !== ""){  
     background = props.images[0].url
+   }
  }
  //console.log(background)
   return (

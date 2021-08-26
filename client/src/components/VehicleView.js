@@ -3,12 +3,14 @@ import { useParams } from 'react-router'
 import { Link, useHistory } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal'
 import VehicleLogCard from './VehicleLogCard'
+import ConfirmDelete from './ConfirmDelete'
 
 import AddLog from './AddLog.js'
 
 export default function VehicleView(props) {
     const {user, setFetchFollows, fetchFollows, followFeed} = props
     const [carData, setCarData] = useState([])
+    const [deleteVeh, setDeleteVeh] = useState(false)
     const [showLogForm, setShowLogForm]= useState(false)
     let history = useHistory()
     const id = useParams().id
@@ -88,10 +90,11 @@ export default function VehicleView(props) {
     console.log(carData)
     return (
         <main role="main">
+            {deleteVeh ? <Modal show={true}><ConfirmDelete deleteVeh={deleteVeh} setDeleteVeh={setDeleteVeh} handleDel={handleDel}/></Modal>:null}
             {showLogForm ? <Modal show={true}><AddLog showLogForm={showLogForm} setShowLogForm={setShowLogForm} carData={carData}/></Modal>:null}
       <section className="jumbotron text-center">
         <div className="container">
-        <img className="view-image" src={imageCard}/>
+        <img className="view-image" src={imageCard} alt={carData.name}/>
           <h1 className="jumbotron-heading">{carData.name}</h1>
           <h4>{carData.year} {carData.make} {carData.model}</h4>
           <p className="lead text-muted">{carData.bio}</p>
@@ -99,11 +102,13 @@ export default function VehicleView(props) {
             {owner ? 
             (<button  onClick={()=> setShowLogForm(true)} className="btn btn-primary my-2">Add log</button>)
             : <>{user ? 
-                (<button onClick={handleFollow}  className="btn btn-primary my-2">
-                {followed ? "Unfollow": "Follow"}</button>)
+                (
+                <button onClick={handleFollow}  className="btn btn-primary">
+                {followed ? "Unfollow": "Follow"}</button>
+                )
                 :(<Link to="/login"><button className="btn btn-success">Sign In to Follow</button></Link>)}</>
                 }
-            {owner ? <button onClick={handleDel} className="btn btn-secondary my-4">Remove Vehicle</button>: null}
+            {owner ? <button onClick={() => setDeleteVeh(true)} className="btn btn-secondary my-4">Remove Vehicle</button>: null}
           </p>
         </div>
       </section>

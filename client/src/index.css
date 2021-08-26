@@ -1,8 +1,18 @@
+input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+  
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
 body {
   margin: 0;
   background-image: url("./tool-background.png");
   background-position: -1rem 0;
-  color: #4ca5ff;
+  color: #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -18,11 +28,14 @@ code {
 
  .login-form {
   width: 340px;
+  background-color: #19486d;
+  border-radius: 2rem;
   margin: 50px auto;
 }
 .login-form form {        
   margin-bottom: 15px;
-  background: #f7f7f7;
+  background: #0b2535;
+  border-radius: 2rem;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   padding: 30px;
 }
@@ -39,4 +52,7 @@ code {
 .btn {        
   font-size: 15px;
   font-weight: bold;
+}
+.text-center{
+  padding-bottom: 0rem;
 }

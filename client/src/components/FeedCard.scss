@@ -44,6 +44,7 @@ html, body {
 }
 
 .feed-card {  
+  border-radius: 1rem;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -157,6 +158,7 @@ html, body {
   letter-spacing: 0.025rem;
   text-transform: uppercase;
   color: white;
+  border-radius: 0.5rem;
   background-color: black;
   border: none;
   

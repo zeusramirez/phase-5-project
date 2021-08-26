@@ -27,13 +27,11 @@ export default function Garage(props) {
             <>
             <div>
             <br/>
-            <br/>
-            
-            <h2>{user.username}'s Garage</h2>
-            <button onClick={() => setShowAccForm(true)} className="btn btn-sm btn-warning my-2">Edit Account</button>
-            <button  onClick={() => setShowVehForm(true)}className="btn btn-sm btn-success">Add a Vehicle</button>
-            <br/>
-            <br/>
+            <div className="container garage-header">
+            <button onClick={() => setShowAccForm(true)} className="btn btn-sm btn-warning my-4">Edit Account</button>
+            <h2 className="header-center">{user.username}'s Garage</h2>
+            <button  onClick={() => setShowVehForm(true)}className="btn btn-sm btn-success my-4">Add a Vehicle</button>
+            </div>
             <br/>
             <br/>
             
