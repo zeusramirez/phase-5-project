@@ -112,13 +112,6 @@ html, body {
     transition: transform calc(var(--d) * 2) var(--e);
   }
   
-  // @each $id in $imageIds {
-  //   $i: index($imageIds, $id);
-    
-  //   &:nth-child(#{$i}):before {
-  //     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTmT7bHGveAK6eI3pdQxRXgZqbOOuvaUufQQ&usqp=CAU);
-  //   }
-  // }
 }
 
 .content {
