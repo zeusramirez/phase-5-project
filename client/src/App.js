@@ -18,7 +18,6 @@ function App() {
     const [errors, setErrors] = useState([])
     const [followFeed, setFollowFeed] = useState([])
     const [fetchFollows, setFetchFollows] = useState(false)
-  //console.log(user.followings)
 
   async function logOut() {
     const res = await fetch("/logout", {
@@ -40,7 +39,6 @@ function App() {
         getFollows()
     }
   }, [fetchFollows])
-  // console.log(followFeed)
 
   async function postUserInfo(updatedInfo) {
     const res = await fetch (`users/${user.id}`,{
