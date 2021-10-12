@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
 
   post "/addvehicle", to: "vehicles#create"
-  # delete "/delvehicle", to: "vehicles#destroy"
   post "/follow", to: "followings#create"
   delete "/unfollow", to: "followings#destroy"
 
