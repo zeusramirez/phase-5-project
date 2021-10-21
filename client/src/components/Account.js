@@ -48,9 +48,6 @@ export default function Account(props) {
                   <div className="text-right"> */}
                     <button onClick={() =>  setShowAccForm(!showAccForm)} className="btn btn-secondary" > Cancel </button>
                     <button onClick={handleSubmit} className="btn btn-primary btn-acc-left">Update</button>
-                  {/* </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
